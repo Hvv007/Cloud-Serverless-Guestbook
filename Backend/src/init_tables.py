@@ -1,5 +1,5 @@
 import boto3
-from config import DB_REGION_NAME, DB_ENDPOINT_URL, AWS_ACCESS_KEY_ID, AWS_PRIVATE_KEY
+from config import DB_REGION_NAME, DB_ENDPOINT_URL, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 
 def init_tables(client):
@@ -68,7 +68,7 @@ if __name__ == '__main__':
                                 region_name=DB_REGION_NAME,
                                 endpoint_url=DB_ENDPOINT_URL,
                                 aws_access_key_id=AWS_ACCESS_KEY_ID,
-                                aws_secret_access_key=AWS_PRIVATE_KEY)
+                                aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     init_tables(ydb_client)
     replica_table = add_replica(ydb_client)
     messages_table = ydb_client.Table('guests')

@@ -4,7 +4,7 @@ info:
   version: 0.0.0
 
 x-yc-apigateway:
-  service_account_id: {APP_SERVICE_ACCOUNT_ID}
+  service_account_id: aje3am1bk08ppi1mas9i
 
 paths:
   /{file+}:
@@ -40,7 +40,7 @@ paths:
                 "$ref": "#/components/schemas/InfoOutput"
       x-yc-apigateway-integration:
         type: serverless_containers
-        container_id: {GUESTBOOK_API_CONTAINER_ID}
+        container_id: bbau8fofl7jq93iunf2u
   "/api/messages":
     get:
       summary: Messages
@@ -54,7 +54,7 @@ paths:
                 "$ref": "#/components/schemas/MessageOutput"
       x-yc-apigateway-integration:
         type: serverless_containers
-        container_id: {GUESTBOOK_API_CONTAINER_ID}
+        container_id: bbau8fofl7jq93iunf2u
     post:
       summary: Message Add
       operationId: name_add_api_messages_post
@@ -79,27 +79,27 @@ paths:
                 "$ref": "#/components/schemas/HTTPValidationError"
       x-yc-apigateway-integration:
         type: serverless_containers
-        container_id: {GUESTBOOK_API_CONTAINER_ID}
+        container_id: bbau8fofl7jq93iunf2u
 components:
   schemas:
     Message:
       title: Message
       required:
-      - guest_name
-      - guest_message
+        - message
+        - author
       type: object
       properties:
-        guest_name:
+        name:
+          title: Name
+          type: string
+        author:
           title: Author
           type: string
-        guest_message:
-          title: Message
-          type: string
-    MessageOutputDto:
+    MessageOutput:
       title: MessageOutput
       required:
-      - messages
-      - count
+        - messages
+        - count
       type: object
       properties:
         messages:
@@ -113,24 +113,24 @@ components:
     MessageOutputName:
       title: MessageOutputName
       required:
-      - guest_name
-      - guest_message
-      - guest_id
+        - message
+        - author
+        - message_id
       type: object
       properties:
-        guest_name:
-          title: Author
-          type: string
-        guest_message:
+        name:
           title: Message
           type: string
-        guest_id:
-          title: Guest Id
+        author:
+          title: Author
           type: string
-    CreateOutputDto:
+        name_id:
+          title: Message Id
+          type: string
+    CreateOutput:
       title: CreateOutput
       required:
-      - created_id
+        - created_id
       type: object
       properties:
         created_id:
@@ -145,25 +145,25 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/ValidationError"
-    InfoOutputDto:
+    InfoOutput:
       title: InfoOutput
       required:
-      - replica_id
-      - backend_version
+        - backend_version
+        - replica_id
       type: object
       properties:
-        replica_id:
-          title: Replica Id
-          type: string
         backend_version:
           title: Backend Version
+          type: string
+        replica_id:
+          title: Replica Id
           type: string
     ValidationError:
       title: ValidationError
       required:
-      - loc
-      - msg
-      - type
+        - loc
+        - msg
+        - type
       type: object
       properties:
         loc:
