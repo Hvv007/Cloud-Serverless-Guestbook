@@ -10,10 +10,10 @@
 7. Выдать все необходимые права сервисному аккаунту `./permissions.sh`
 8. Поменять в `Backend/openapi.yaml` и `frontend/openapi.yaml` заглушки `APP_SERVICE_ACCOUNT_ID` и `GUESTBOOK_API_CONTAINER_ID` на реальные значения
 9. Создаём gateway API `terraform apply -target=yandex_ydb_database_serverless.guestbook_api_gateway`
-10. Выставляем переменную окружения `GUESTBOOK_API_GATEWAY`
+10. Выставляем переменную окружения `GUESTBOOK_API_GATEWAY` 
 11. Создаём gateway для Frontend `terraform apply -target=yandex_api_gateway.guestbook_frontend_gateway`, вывод - ссылка для фронта 
 12. Создаём бакеты `terraform apply -target=yandex_storage_bucket.guestbook_frontend_bucket` 
-13. Выставляем переменную окружения `GUESTBOOK_WEBSITE_BUCKET` с соответсвующим значением
+13. Выставляем переменную окружения `GUESTBOOK_WEBSITE_BUCKET` с соответсвующим значением и в `frontend/openapi.yaml`
 13. Создаём таблицы, для этого в папке `Backend` исполняем python скрипт `init_tables.py` 
 14. В файле`frontend/src/api.js` указываем значение `GUESTBOOK_API_GATEWAY` 
 15. Для деплоя исполняем `Backend/deploy.sh` и `frontend/deploy.sh` 
