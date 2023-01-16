@@ -2,14 +2,13 @@ import React from 'react'
 
 function Messages(props) {
     return (
-        <div className="flex flex-col w-full max-w-4xl mx-auto">
+        <div className="flex flex-col justify-center items-center mx-5">
             <p className='text-lg'>
-                {props.message}
+                Guest name: {props.message}
             </p>
-            <p className='text-sm'>
-                {props.name}
+            <p className='text-lg'>
+                Message: {props.name}
             </p>
-            <hr className='mt-2' />
         </div>
     )
 }

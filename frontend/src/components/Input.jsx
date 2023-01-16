@@ -45,20 +45,21 @@ function Input() {
 
     return (
         <>
-            <div>{`Backend version: ${apiVersion}`}</div>
-            <div>{`Frontend version: ${pck.version}`}</div>
-            <div>{`Replica: ${replica}`}</div>
+            <div className='fixed bottom-0 left-0'>
+                <div>{`Backend version: ${apiVersion}`}</div>
+                <div>{`Frontend version: ${pck.version}`}</div>
+                <div>{`Replica: ${replica}`}</div>
+            </div>
+
         <div>
-            <div className='flex lg:flex-row flex-col  items-center justify-center  lg:space-y-0 space-y-3 lg:space-x-3 p-3'>
+            <div className='flex flex-col  items-center justify-center my-10 space-y-3 p-3'>
                 <TextField
-                    label="Enter your name"
-                    variant="outlined"
+                    label="Guest name"
                     size='small'
                     onChange={(evt) => {setData({...data, author: evt.target.value})}}
                 />
                 <TextField
-                    label="Enter your message"
-                    variant="outlined"
+                    label="Message"
                     size='small'
                     onChange={(evt) => {setData({...data, message: evt.target.value})}}
                 />

@@ -14,7 +14,7 @@ export const makePostRequest = (data, setSending, isSent) => {
         redirect: 'follow'
     };
 
-    fetch(`${api}/api/messages`, requestOptions)
+    fetch(api +"/api/messages", requestOptions)
         .then(response => {response.text();
             setSending(!isSent)
         })
